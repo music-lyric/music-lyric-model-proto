@@ -1,0 +1,47 @@
+syntax = "proto3";
+
+package lyric;
+
+message LineAnnotationUnknown {
+  // Original annotation type name.
+  string key = 1;
+
+  // Language or transliteration scheme of this item.
+  optional string language = 2;
+
+  // Original text.
+  string content = 3;
+
+  // Whether this item was derived from word-level annotations rather than set explicitly.
+  bool derived = 4;
+}
+
+message LineAnnotationRoman {
+  // Language or transliteration scheme of this item.
+  optional string language = 1;
+
+  // Original text.
+  string content = 2;
+
+  // Whether this item was derived from word-level annotations rather than set explicitly.
+  bool derived = 3;
+}
+
+message LineAnnotationTranslate {
+  // Language or transliteration scheme of this item.
+  optional string language = 1;
+
+  // Original text.
+  string content = 2;
+}
+
+message LineAnnotation {
+  // Unknown annotation preserved by its original key.
+  repeated LineAnnotationUnknown unknowns = 1;
+
+  // Translation into another language.
+  repeated LineAnnotationTranslate translates = 2;
+
+  // Romanized transliteration.
+  repeated LineAnnotationRoman romans = 3;
+}

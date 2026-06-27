@@ -1,0 +1,11 @@
+syntax = "proto3";
+
+package lyric;
+
+message Time {
+  // Start time in milliseconds.
+  uint32 start = 1;
+
+  // End time in milliseconds.
+  uint32 end = 2;
+}

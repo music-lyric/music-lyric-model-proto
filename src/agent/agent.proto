@@ -1,0 +1,50 @@
+syntax = "proto3";
+
+package lyric;
+
+enum AgentType {
+  AGENT_TYPE_UNSPECIFIED = 0;
+
+  // An unrecognized agent type.
+  AGENT_TYPE_UNKNOWN = 1;
+
+  // A single person.
+  AGENT_TYPE_PERSON = 2;
+
+  // A group of voices, such as a duet, harmony or chorus.
+  AGENT_TYPE_GROUP = 3;
+
+  // Another kind of agent that is neither a person nor a group.
+  AGENT_TYPE_OTHER = 4;
+}
+
+message AgentItem {
+  // Unique identifier of the agent.
+  string id = 1;
+
+  // Performing type of the agent.
+  AgentType type = 2;
+
+  // Number of lines performed by this agent.
+  //
+  // Snapshot filled by `calcAgentIndex` at parse time; stale after lines change.
+  uint32 count = 3;
+
+  // Display names of the agent; a group may carry more than one.
+  repeated string names = 4;
+}
+
+message LineAgent {
+  // Identifier of the referenced agent.
+  string id = 1;
+
+  // Index of this agent occurrence among all lines.
+  //
+  // Snapshot filled by `calcAgentIndex` at parse time.
+  uint32 global_index = 2;
+
+  // Index of this agent occurrence within its block.
+  //
+  // Snapshot filled by `calcAgentIndex` at parse time.
+  uint32 block_index = 3;
+}

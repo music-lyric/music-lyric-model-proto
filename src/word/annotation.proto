@@ -1,0 +1,66 @@
+syntax = "proto3";
+
+package lyric;
+
+import "common/time.proto";
+
+message WordAnnotationContent {
+  // Time range of the token.
+  optional Time time = 1;
+
+  // Text content of the token.
+  string content = 2;
+}
+
+message WordAnnotationRoman {
+  // Time range of the item, independent from its words.
+  optional Time time = 1;
+
+  // Language or transliteration scheme of this item.
+  // Should be set when multiple languages coexist, since line-level aggregation groups items by it.
+  optional string language = 2;
+
+  // Tokens composing the item in order.
+  repeated WordAnnotationContent words = 3;
+}
+
+message WordAnnotationRuby {
+  // Time range of the item, independent from its words.
+  optional Time time = 1;
+
+  // Language or transliteration scheme of this item.
+  // Should be set when multiple languages coexist, since line-level aggregation groups items by it.
+  optional string language = 2;
+
+  // Tokens composing the item in order.
+  repeated WordAnnotationContent words = 3;
+
+  // Whether this ruby marks the start of a phrase.
+  bool phrase_start = 4;
+}
+
+message WordAnnotationUnknown {
+  // Original annotation type name.
+  string key = 1;
+
+  // Time range of the item, independent from its words.
+  optional Time time = 2;
+
+  // Language or transliteration scheme of this item.
+  // Should be set when multiple languages coexist, since line-level aggregation groups items by it.
+  optional string language = 3;
+
+  // Tokens composing the item in order.
+  repeated WordAnnotationContent words = 4;
+}
+
+message WordAnnotation {
+  // Unknown annotations keyed by their original type name.
+  repeated WordAnnotationUnknown unknowns = 1;
+
+  // Ruby annotation such as furigana.
+  optional WordAnnotationRuby ruby = 2;
+
+  // Romanized transliterations.
+  repeated WordAnnotationRoman romans = 3;
+}

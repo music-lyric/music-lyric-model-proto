@@ -1,0 +1,36 @@
+syntax = "proto3";
+
+package lyric;
+
+import "common/time.proto";
+
+import "word/annotation.proto";
+
+message WordNormal {
+  // Time range of the word.
+  optional Time time = 1;
+
+  // Text content of the word.
+  string content = 2;
+
+  // Language of this word.
+  optional string language = 3;
+
+  // Annotations attached to this word.
+  optional WordAnnotation annotation = 4;
+
+  // Whether the word is stressed.
+  bool stress = 5;
+}
+
+message WordSpace {
+  // Number of consecutive space characters.
+  uint32 count = 1;
+}
+
+message Word {
+  oneof body {
+    WordNormal normal = 1;
+    WordSpace space = 2;
+  }
+}

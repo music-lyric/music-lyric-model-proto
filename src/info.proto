@@ -1,0 +1,58 @@
+syntax = "proto3";
+
+package lyric;
+
+import "meta/meta.proto";
+import "language/language.proto";
+import "agent/agent.proto";
+
+import "line/content.proto";
+
+enum InfoType {
+  INFO_TYPE_UNSPECIFIED = 0;
+
+  // Parsing the lyric failed.
+  INFO_TYPE_INVALID = 1;
+
+  // Has no lyric line.
+  INFO_TYPE_EMPTY = 2;
+
+  // Has lyric content.
+  INFO_TYPE_NORMAL = 3;
+}
+
+enum InfoTiming {
+  INFO_TIMING_UNSPECIFIED = 0;
+
+  // No time flag.
+  INFO_TIMING_NONE = 1;
+
+  // Timed at line level.
+  INFO_TIMING_LINE = 2;
+
+  // Timed at word level.
+  INFO_TIMING_SYLLABLE = 3;
+}
+
+message Info {
+  // Schema version of this data model.
+  string version = 1;
+
+  // Overall classification of the lyric.
+  InfoType type = 2;
+
+  // Timing precision of the lyric.
+  InfoTiming timing = 3;
+
+  // Metadata of the lyric.
+  repeated MetaItem metas = 4;
+
+  // Language distribution of the lyric.
+  repeated LanguageItem languages = 5;
+
+  // Performing agents referenced by lines.
+  repeated AgentItem agents = 6;
+
+  // Lyric lines in order.
+  repeated Line lines = 7;
+}

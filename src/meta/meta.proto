@@ -1,0 +1,48 @@
+syntax = "proto3";
+
+package lyric;
+
+import "google/protobuf/struct.proto";
+
+message MetaCreator {
+  // Role of the creator, such as lyricist or composer.
+  string role = 1;
+
+  // Names of the creators for this role.
+  repeated string name = 2;
+}
+
+message MetaItem {
+  // Original data key kept for round-trip fidelity and source tracing.
+  string key = 1;
+
+  // Parsed value typed by the meta kind.
+  oneof content {
+    // Unknown meta kind preserved by its original key.
+    google.protobuf.Value unknown = 2;
+
+    // Lyric time offset in milliseconds.
+    double offset = 3;
+
+    // Song duration.
+    double duration = 4;
+
+    // Song title.
+    string title = 5;
+
+    // Song singer.
+    string singer = 6;
+
+    // Song album.
+    string album = 7;
+
+    // Song creator such as lyricist or composer.
+    MetaCreator creator = 8;
+
+    // Lyric author or transcriber.
+    string author = 9;
+
+    // International Standard Recording Code.
+    string isrc = 10;
+  }
+}

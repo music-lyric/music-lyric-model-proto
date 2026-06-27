@@ -1,0 +1,60 @@
+syntax = "proto3";
+
+package lyric;
+
+import "common/time.proto";
+
+import "agent/agent.proto";
+
+import "word/content.proto";
+
+import "line/annotation.proto";
+
+message LineNormal {
+  // Time range of the line.
+  Time time = 1;
+
+  // Performing agent of this line.
+  optional LineAgent agent = 2;
+
+  // Words composing the line in order.
+  repeated Word words = 3;
+
+  // Annotations applied to the whole line, derived from words unless set explicitly.
+  LineAnnotation annotation = 4;
+
+  // Language tags of this line: the explicit value, otherwise live-collected from words on each access.
+  repeated string languages = 5;
+
+  // Background lines attached to this line.
+  repeated LineBackground backgrounds = 6;
+}
+
+message LineBackground {
+  // Time range of the line.
+  Time time = 1;
+
+  // Performing agent of this line.
+  optional LineAgent agent = 2;
+
+  // Words composing the line in order.
+  repeated Word words = 3;
+
+  // Annotations applied to the whole line, derived from words unless set explicitly.
+  LineAnnotation annotation = 4;
+
+  // Language tags of this line: the explicit value, otherwise live-collected from words on each access.
+  repeated string languages = 5;
+}
+
+message LineInterlude {
+  // Time range of the line.
+  Time time = 1;
+}
+
+message Line {
+  oneof body {
+    LineNormal normal = 1;
+    LineInterlude interlude = 2;
+  }
+}
