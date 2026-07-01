@@ -26,6 +26,14 @@ message MetaUnknown {
   string value = 2;
 }
 
+message MetaReference {
+  // Platform name.
+  string platform = 1;
+
+  // Identifiers on that platform.
+  repeated string ids = 2;
+}
+
 message Meta {
   // Unrecognized meta preserved by its original key.
   repeated MetaUnknown unknowns = 1;
@@ -53,4 +61,7 @@ message Meta {
 
   // Song credits such as lyricist or composer.
   repeated MetaCredit credits = 9;
+
+  // Cross-platform references.
+  repeated MetaReference references = 10;
 }
