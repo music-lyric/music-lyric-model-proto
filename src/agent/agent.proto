@@ -25,26 +25,11 @@ message AgentItem {
   // Performing type of the agent.
   AgentType type = 2;
 
-  // Number of lines performed by this agent.
-  //
-  // Snapshot filled by `calcAgentIndex` at parse time; stale after lines change.
-  uint32 count = 3;
-
   // Display names of the agent; a group may carry more than one.
-  repeated string names = 4;
+  repeated string names = 3;
 }
 
 message LineAgent {
   // Identifier of the referenced agent.
   string id = 1;
-
-  // Index of this agent occurrence among all lines.
-  //
-  // Snapshot filled by `calcAgentIndex` at parse time.
-  uint32 global_index = 2;
-
-  // Index of this agent occurrence within its block.
-  //
-  // Snapshot filled by `calcAgentIndex` at parse time.
-  uint32 block_index = 3;
 }
