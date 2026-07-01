@@ -8,6 +8,7 @@
 
 ```
 src/
+  version.txt             # 規範版本號
   info.proto              # Info, 根訊息
   common/time.proto
   meta/meta.proto
@@ -23,7 +24,7 @@ src/
 
 ## 版本
 
-schema 以 git tag `vX.Y.Z` 發佈; tag 即版本號, 因此儲存庫中不另行保存版本檔. 各綁定會從其所 pin 的 tag 讀取版本.
+規範版本號保存於 `src/version.txt`, 並以同名 git tag `vX.Y.Z` 發佈. 各綁定會從其所 pin 的 tag 對應的該檔案讀取版本.
 
 - **major**: wire 上的破壞性變更
 - **minor**: 增量變更 (新增欄位, 訊息或列舉值)

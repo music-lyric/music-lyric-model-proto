@@ -8,6 +8,7 @@ The Protobuf schema for the **music lyric model**.
 
 ```
 src/
+  version.txt             # Canonical schema version
   info.proto              # Info — the root message
   common/time.proto
   meta/meta.proto
@@ -23,7 +24,7 @@ All types are defined in package `lyric`, with imports rooted at `src/` (e.g. `i
 
 ## Versioning
 
-The schema is released as git tags `vX.Y.Z`; the tag is the version, so no version file is kept in the tree. Each binding reads the version from the tag it pins.
+The canonical version is kept in `src/version.txt` and released as a matching git tag `vX.Y.Z`. Each binding reads the version from that file at the tag it pins.
 
 - **major** — a breaking change on the wire
 - **minor** — an additive change (a new field, message, or enum value)
