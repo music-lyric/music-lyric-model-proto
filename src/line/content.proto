@@ -12,7 +12,7 @@ import "line/annotation.proto";
 
 message LineContent {
   // Performing agent of this line.
-  optional LineAgent agent = 1;
+  LineAgent agent = 1;
 
   // Words composing the line in order.
   repeated Word words = 2;

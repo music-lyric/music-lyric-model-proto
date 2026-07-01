@@ -8,7 +8,7 @@ import "word/annotation.proto";
 
 message WordNormal {
   // Time range of the word.
-  optional Time time = 1;
+  Time time = 1;
 
   // Text content of the word.
   string content = 2;
@@ -17,7 +17,7 @@ message WordNormal {
   optional string language = 3;
 
   // Annotations attached to this word.
-  optional WordAnnotation annotation = 4;
+  WordAnnotation annotation = 4;
 
   // Whether the word is stressed.
   bool stress = 5;

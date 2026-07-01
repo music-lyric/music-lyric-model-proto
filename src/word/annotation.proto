@@ -6,7 +6,7 @@ import "common/time.proto";
 
 message WordAnnotationContent {
   // Time range of the token.
-  optional Time time = 1;
+  Time time = 1;
 
   // Text content of the token.
   string content = 2;
@@ -14,7 +14,7 @@ message WordAnnotationContent {
 
 message WordAnnotationRoman {
   // Time range of the item, independent from its words.
-  optional Time time = 1;
+  Time time = 1;
 
   // Language or transliteration scheme of this item.
   // Set it when multiple languages coexist, so a line-level aggregation, if performed, can group items by it.
@@ -26,7 +26,7 @@ message WordAnnotationRoman {
 
 message WordAnnotationTranslate {
   // Time range of the item, independent from its words.
-  optional Time time = 1;
+  Time time = 1;
 
   // Target language of this translation.
   // Set it when multiple languages coexist, so a line-level aggregation, if performed, can group items by it.
@@ -38,7 +38,7 @@ message WordAnnotationTranslate {
 
 message WordAnnotationRuby {
   // Time range of the item, independent from its words.
-  optional Time time = 1;
+  Time time = 1;
 
   // Language or transliteration scheme of this item.
   // Set it when multiple languages coexist, so a line-level aggregation, if performed, can group items by it.
@@ -56,7 +56,7 @@ message WordAnnotationUnknown {
   string key = 1;
 
   // Time range of the item, independent from its words.
-  optional Time time = 2;
+  Time time = 2;
 
   // Language or transliteration scheme of this item.
   // Set it when multiple languages coexist, so a line-level aggregation, if performed, can group items by it.
@@ -71,7 +71,7 @@ message WordAnnotation {
   repeated WordAnnotationUnknown unknowns = 1;
 
   // Ruby annotation such as furigana.
-  optional WordAnnotationRuby ruby = 2;
+  WordAnnotationRuby ruby = 2;
 
   // Romanized transliterations.
   repeated WordAnnotationRoman romans = 3;
