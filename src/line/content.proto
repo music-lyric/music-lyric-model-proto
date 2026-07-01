@@ -20,10 +20,12 @@ message LineNormal {
   // Words composing the line in order.
   repeated Word words = 3;
 
-  // Annotations applied to the whole line, derived from words unless set explicitly.
+  // Annotations applied to the whole line.
+  // A binding may populate these by aggregating word annotations; items so produced set `derived = true`.
   LineAnnotation annotation = 4;
 
-  // Language tags of this line: the explicit value, otherwise live-collected from words on each access.
+  // Language tags of this line.
+  // A binding may fall back to the languages of its words when this is empty.
   repeated string languages = 5;
 
   // Background lines attached to this line.
@@ -40,10 +42,12 @@ message LineBackground {
   // Words composing the line in order.
   repeated Word words = 3;
 
-  // Annotations applied to the whole line, derived from words unless set explicitly.
+  // Annotations applied to the whole line.
+  // A binding may populate these by aggregating word annotations; items so produced set `derived = true`.
   LineAnnotation annotation = 4;
 
-  // Language tags of this line: the explicit value, otherwise live-collected from words on each access.
+  // Language tags of this line.
+  // A binding may fall back to the languages of its words when this is empty.
   repeated string languages = 5;
 }
 

@@ -17,7 +17,7 @@ message WordAnnotationRoman {
   optional Time time = 1;
 
   // Language or transliteration scheme of this item.
-  // Should be set when multiple languages coexist, since line-level aggregation groups items by it.
+  // Set it when multiple languages coexist, so a line-level aggregation, if performed, can group items by it.
   optional string language = 2;
 
   // Tokens composing the item in order.
@@ -29,7 +29,7 @@ message WordAnnotationRuby {
   optional Time time = 1;
 
   // Language or transliteration scheme of this item.
-  // Should be set when multiple languages coexist, since line-level aggregation groups items by it.
+  // Set it when multiple languages coexist, so a line-level aggregation, if performed, can group items by it.
   optional string language = 2;
 
   // Tokens composing the item in order.
@@ -47,7 +47,7 @@ message WordAnnotationUnknown {
   optional Time time = 2;
 
   // Language or transliteration scheme of this item.
-  // Should be set when multiple languages coexist, since line-level aggregation groups items by it.
+  // Set it when multiple languages coexist, so a line-level aggregation, if performed, can group items by it.
   optional string language = 3;
 
   // Tokens composing the item in order.

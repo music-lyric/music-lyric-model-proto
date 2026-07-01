@@ -12,7 +12,7 @@ message LineAnnotationUnknown {
   // Original text.
   string content = 3;
 
-  // Whether this item was derived from word-level annotations rather than set explicitly.
+  // Whether this item was produced by aggregating word annotations rather than set explicitly.
   bool derived = 4;
 }
 
@@ -23,7 +23,7 @@ message LineAnnotationRoman {
   // Original text.
   string content = 2;
 
-  // Whether this item was derived from word-level annotations rather than set explicitly.
+  // Whether this item was produced by aggregating word annotations rather than set explicitly.
   bool derived = 3;
 }
 
