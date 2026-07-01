@@ -2,11 +2,11 @@ syntax = "proto3";
 
 package lyric;
 
-message MetaCreator {
-  // Role of the creator, such as lyricist or composer.
+message MetaCredit {
+  // Role of the credit, such as lyricist or composer.
   string role = 1;
 
-  // Names of the creators for this role.
+  // Names credited for this role.
   repeated string names = 2;
 }
 
@@ -31,18 +31,18 @@ message Meta {
   // Song titles, one per language when localized.
   repeated string titles = 4;
 
-  // Song singers.
-  repeated string singers = 5;
+  // Song artists.
+  repeated string artists = 5;
 
   // Song albums, one per language when localized.
   repeated string albums = 6;
 
-  // Lyric authors or transcribers.
+  // Authors or transcribers of the lyric file, not the song itself.
   repeated string authors = 7;
 
   // International Standard Recording Codes.
   repeated string isrcs = 8;
 
-  // Song creators such as lyricist or composer.
-  repeated MetaCreator creators = 9;
+  // Song credits such as lyricist or composer.
+  repeated MetaCredit credits = 9;
 }
