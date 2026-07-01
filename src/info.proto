@@ -14,34 +14,31 @@ enum InfoType {
   // Parsing the lyric failed.
   INFO_TYPE_INVALID = 1;
 
-  // Has no lyric line.
-  INFO_TYPE_EMPTY = 2;
-
-  // Has lyric content.
-  INFO_TYPE_NORMAL = 3;
+  // Parsed successfully; emptiness is derived from `lines`.
+  INFO_TYPE_VALID = 2;
 }
 
 enum InfoTiming {
   INFO_TIMING_UNSPECIFIED = 0;
 
-  // No time flag.
+  // Untimed; the lyric carries no time at all.
   INFO_TIMING_NONE = 1;
 
   // Timed at line level.
   INFO_TIMING_LINE = 2;
 
   // Timed at word level.
-  INFO_TIMING_SYLLABLE = 3;
+  INFO_TIMING_WORD = 3;
 }
 
 message Info {
   // Schema version of this data model.
   string version = 1;
 
-  // Overall classification of the lyric.
+  // Parse validity of the lyric.
   InfoType type = 2;
 
-  // Timing precision of the lyric.
+  // Declared timing precision.
   InfoTiming timing = 3;
 
   // Metadata of the lyric.
