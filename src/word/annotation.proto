@@ -24,6 +24,18 @@ message WordAnnotationRoman {
   repeated WordAnnotationContent words = 3;
 }
 
+message WordAnnotationTranslate {
+  // Time range of the item, independent from its words.
+  optional Time time = 1;
+
+  // Target language of this translation.
+  // Set it when multiple languages coexist, so a line-level aggregation, if performed, can group items by it.
+  optional string language = 2;
+
+  // Tokens composing the item in order.
+  repeated WordAnnotationContent words = 3;
+}
+
 message WordAnnotationRuby {
   // Time range of the item, independent from its words.
   optional Time time = 1;
@@ -63,4 +75,7 @@ message WordAnnotation {
 
   // Romanized transliterations.
   repeated WordAnnotationRoman romans = 3;
+
+  // Translations into another language.
+  repeated WordAnnotationTranslate translates = 4;
 }

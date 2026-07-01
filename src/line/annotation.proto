@@ -6,33 +6,36 @@ message LineAnnotationUnknown {
   // Original annotation type name.
   string key = 1;
 
+  // Whether this item was produced by aggregating word annotations rather than set explicitly.
+  bool derived = 2;
+
+  // Language or transliteration scheme of this item.
+  optional string language = 3;
+
+  // Original text.
+  string content = 4;
+}
+
+message LineAnnotationRoman {
+  // Whether this item was produced by aggregating word annotations rather than set explicitly.
+  bool derived = 1;
+
   // Language or transliteration scheme of this item.
   optional string language = 2;
 
   // Original text.
   string content = 3;
-
-  // Whether this item was produced by aggregating word annotations rather than set explicitly.
-  bool derived = 4;
-}
-
-message LineAnnotationRoman {
-  // Language or transliteration scheme of this item.
-  optional string language = 1;
-
-  // Original text.
-  string content = 2;
-
-  // Whether this item was produced by aggregating word annotations rather than set explicitly.
-  bool derived = 3;
 }
 
 message LineAnnotationTranslate {
+  // Whether this item was produced by aggregating word annotations rather than set explicitly.
+  bool derived = 1;
+
   // Language or transliteration scheme of this item.
-  optional string language = 1;
+  optional string language = 2;
 
   // Original text.
-  string content = 2;
+  string content = 3;
 }
 
 message LineAnnotation {
