@@ -2,12 +2,20 @@ syntax = "proto3";
 
 package lyric;
 
+message MetaText {
+  // Language tag of this value; unset means unspecified or default.
+  optional string language = 1;
+
+  // Text value.
+  string value = 2;
+}
+
 message MetaCredit {
   // Role of the credit, such as lyricist or composer.
   string role = 1;
 
   // Names credited for this role.
-  repeated string names = 2;
+  repeated MetaText names = 2;
 }
 
 message MetaUnknown {
@@ -28,17 +36,17 @@ message Meta {
   // Song duration in milliseconds.
   uint32 duration = 3;
 
-  // Song titles, one per language when localized.
-  repeated string titles = 4;
+  // Song titles.
+  repeated MetaText titles = 4;
 
   // Song artists.
-  repeated string artists = 5;
+  repeated MetaText artists = 5;
 
-  // Song albums, one per language when localized.
-  repeated string albums = 6;
+  // Song albums.
+  repeated MetaText albums = 6;
 
   // Authors or transcribers of the lyric file, not the song itself.
-  repeated string authors = 7;
+  repeated MetaText authors = 7;
 
   // International Standard Recording Codes.
   repeated string isrcs = 8;
