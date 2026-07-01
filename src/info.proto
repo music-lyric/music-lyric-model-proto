@@ -45,7 +45,7 @@ message Info {
   InfoTiming timing = 3;
 
   // Metadata of the lyric.
-  repeated MetaItem metas = 4;
+  Meta meta = 4;
 
   // Language distribution of the lyric.
   repeated LanguageItem languages = 5;
